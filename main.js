@@ -10,4 +10,10 @@ let parsingTimeout = 0
 
 let link = `${baseLink}${page}.html`
 // const fetch = require('node-fetch')
-fetch(link).then(response => response.text()).then(data => console.log(data))
+async function getData() {
+    let response = await fetch(link)
+    let data = await response.text()
+    console.log(data)
+}
+
+getData()
