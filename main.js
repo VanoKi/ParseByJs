@@ -16,4 +16,7 @@ async function getData() {
     console.log(data)
 }
 
-getData()
+// getData()
+
+const data = fetch(link).then(response => response.text()).then(data => console.log(data))
+// console.log(data)
