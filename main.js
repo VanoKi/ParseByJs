@@ -10,7 +10,7 @@ const fs = require('fs')
 
 // let link = `${baseLink}${page}.html`
 // fetch(link).then(response => response.text()).then(data => console.log(data))
-const { JSDOM } = require('jsdom')
+const {JSDOM} = require('jsdom')
 
 function getHref(link) {
     JSDOM.fromURL(link).then(dom => {
@@ -26,17 +26,11 @@ function getHref(link) {
 // const link = `https://books.toscrape.com/index.html`
 const link = `https://books.toscrape.com/catalogue/page-1.html`
 
-JSDOM.fromURL(link).then(dom => {
-    const btnNext = dom.window.document.querySelector('.next')
-    // console.log(btnNext)
-    if (btnNext) {
-        const baseLink = `https://books.toscrape.com/catalogue/page-`
-        let page = 1
-        let link = `${baseLink}${page}.html`
-        console.log(link)
-        page += 1
-        console.log(page)
-    } else {
-        console.log(btnNext)
-    }
-})
+function findBtnNext(link) {
+    JSDOM.fromURL(link).then(dom => {
+        const btnNext = dom.window.document.querySelector('.next')
+        console.log(btnNext.querySelector('a').getAttribute('href'))
+    })
+}
+
+findBtnNext(link)
