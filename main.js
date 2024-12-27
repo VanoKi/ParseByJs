@@ -29,8 +29,11 @@ const link = `https://books.toscrape.com/catalogue/page-1.html`
 function findBtnNext(link) {
     JSDOM.fromURL(link).then(dom => {
         const btnNext = dom.window.document.querySelector('.next')
-        console.log(btnNext.querySelector('a').getAttribute('href'))
+        let href = btnNext.querySelector('a').getAttribute('href')
+        console.log(href)
+        link = `https://books.toscrape.com/catalogue/${href}`
+        findBtnNext(link)
     })
 }
 
-findBtnNext(link)
+findBtnNext(`https://books.toscrape.com/catalogue/page-1.html`)
