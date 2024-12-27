@@ -10,13 +10,16 @@ let parsingTimeout = 0
 
 let link = `${baseLink}${page}.html`
 // fetch(link).then(response => response.text()).then(data => console.log(data))
-
 const { JSDOM } = require('jsdom')
-JSDOM.fromURL(link).then(dom => {
-    const bookTitles = dom.window.document.querySelectorAll('h3')
-    // console.log(title.textContent)
-    bookTitles.forEach(item => {
-        // console.log(item.textContent)
-        console.log(item.querySelector('a').getAttribute('href'))
+
+function getHref(link) {
+    JSDOM.fromURL(link).then(dom => {
+        const bookTitles = dom.window.document.querySelectorAll('h3')
+        // console.log(title.textContent)
+        bookTitles.forEach(item => {
+            // console.log(item.textContent)
+            console.log(item.querySelector('a').getAttribute('href'))
+        })
     })
-})
+}
+
