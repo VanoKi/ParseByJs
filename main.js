@@ -13,6 +13,7 @@ let link = `${baseLink}${page}.html`
 
 const { JSDOM } = require('jsdom')
 JSDOM.fromURL(link).then(dom => {
-    const title = dom.window.document.querySelector('h1')
-    console.log(title.textContent)
+    const bookTitles = dom.window.document.querySelectorAll('h3')
+    // console.log(title.textContent)
+    bookTitles.forEach(item => console.log(item.outerHTML))
 })
