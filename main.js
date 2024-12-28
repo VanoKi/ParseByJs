@@ -32,6 +32,7 @@ function findBtnNext(link) {
         let href = btnNext.querySelector('a').getAttribute('href')
         console.log(href)
         link = `https://books.toscrape.com/catalogue/${href}`
+        getHref(link)
         findBtnNext(link)
     })
 }
