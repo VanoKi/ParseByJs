@@ -1,3 +1,3 @@
 import {sayHi} from './sayHi.js'
 
-alert(sayHi('Ivan'))
+document.body.innerHTML = sayHi('VanoKi!')
