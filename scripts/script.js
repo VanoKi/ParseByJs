@@ -1,1 +1,3 @@
-alert('Hello world!')
+import {sayHi} from './sayHi.js'
+
+alert(sayHi('Ivan'))
