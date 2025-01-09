@@ -1,3 +1,9 @@
-import {sayHi} from './sayHi.js'
-
-document.body.innerHTML = sayHi('VanoKi!')
+(() => {
+    function foo() {
+        console.log('Hello world!')
+    }
+    globalThis.myModule = {
+        foo
+    }
+})()
+globalThis.myModule.foo()
