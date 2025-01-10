@@ -6,8 +6,7 @@ const dirPath = 'C:\\Users\\VanoHa\\Documents\\'
 // ic(path.resolve())
 async function findObsidianDir() {
     const items = await fs.promises.readdir(dirPath)
-    const obsidianDir = items.filter(item => item.match(/obsidian/ig))
-    return obsidianDir
+    return  items.filter(item => item.match(/obsidian/ig))
 }
 
 // let obsDir = findObsidianDir()
