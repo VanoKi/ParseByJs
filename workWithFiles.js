@@ -36,7 +36,7 @@ async function main() {
     if (obsidianPath) {
         await getList(obsidianPath)
     } else {
-        console.log('dir doesn`t exist')
+        console.log('dir does`t exist')
     }
 }
 
