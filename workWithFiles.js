@@ -14,11 +14,30 @@ async function findObsidianDir(word) {
 async function getObsidianPath(word) {
         try {
             obsidianDir = await findObsidianDir(word)
-            // return  path.join(dirPath, obsidianDir.toString())
             console.log(path.join(dirPath, obsidianDir.toString()))
+            return  path.join(dirPath, obsidianDir.toString())
         }catch (e) {
             console.log(e)
         }
 }
 
-getObsidianPath('obsidian')
+async function getList(dirPath) {
+    try {
+        const files = await fs.promises.readdir(dirPath)
+        console.log(files)
+    }catch (e) {
+        console.log(e)
+    }
+}
+
+async function main() {
+    const obsidianPath = await getObsidianPath('obsidian')
+    console.log(obsidianPath)
+    if (obsidianPath) {
+        await getList(obsidianPath)
+    } else {
+        console.log('dir doesn`t exist')
+    }
+}
+
+main()
