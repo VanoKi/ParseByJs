@@ -9,10 +9,13 @@ async function findObsidianDir() {
     return  items.filter(item => item.match(/obsidian/ig))
 }
 
-// let obsDir = findObsidianDir()
-// console.log(obsDir)
-findObsidianDir().then(result => {
-    console.log(result)
-}).catch(err => {
-    console.log(err)
-})
+async function main() {
+    try {
+        const result = await findObsidianDir()
+        console.log(result)
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+main()
