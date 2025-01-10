@@ -5,20 +5,19 @@ const path = require('path')
 const dirPath = 'C:\\Users\\VanoHa\\Documents\\'
 // ic(path.resolve())
 let obsidianDir = null
-async function findObsidianDir() {
+async function findObsidianDir(regex) {
     const items = await fs.promises.readdir(dirPath)
-    return  items.filter(item => item.match(/obsidian/ig))
+    return  items.filter(item => item.match(regex))
 }
 
-async function main() {
+async function getObsidianPath(regex) {
         try {
-            obsidianDir = await findObsidianDir()
-            // console.log(obsidianDir.toString())
+            obsidianDir = await findObsidianDir(regex)
+            // return  path.join(dirPath, obsidianDir.toString())
             console.log(path.join(dirPath, obsidianDir.toString()))
         }catch (e) {
             console.log(e)
         }
 }
-main()
-// console.log(Object.keys(path))
-// console.dir(path)
+
+getObsidianPath(/obsidian/gi)
