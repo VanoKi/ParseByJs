@@ -16,5 +16,12 @@ fs.readFile(file1, 'utf-8', (err, data1) => {
         // lines2.forEach((item, index) => {
         //     console.log(`${index} ${item}`)
         // })
+        for (let i = 0; i < lines1.length; i++) {
+            // console.log(lines1[i])
+            // if (lines2.includes(lines1[i])) {
+            //     console.log(lines1[i])
+            console.log(lines2.match(/lines1[i]/))
+            // }
+        }
     })
 })
