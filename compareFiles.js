@@ -12,8 +12,17 @@ fs.readFile(file1, 'utf-8', (err, data1) => {
         const lines2 = data2.split('- ').map(i => i.trim())
         // console.log(lines1)
         // console.log(lines2)
-        lines1.forEach((item, index) => {
-            console.log(index, item, lines2[index])
-        })
+        // lines1.forEach((item, index) => {
+        //     console.log(index, item, lines2[index])
+        // })
+        for (let i = 0; i < lines1.length; i++) {
+            for (let j = 0; j < lines1[i].length; j++) {
+                if (lines1[i][j] === lines2[i]) {
+                    console.log(`**${lines1[i][j]}**`)
+                } else {
+                    console.log(lines1[i][j])
+                }
+            }
+        }
     })
 })
