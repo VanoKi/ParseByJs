@@ -14,19 +14,17 @@ fs.writeFile(outPath, '', 'utf-8', (e) => {
             const lines1 = data1.split(/\d+\.\s/).map(i => i.split('\n'))
             const lines2 = data2.split('- ').map(i => i.trim())
             for (let i = 0; i < lines1.length; i++) {
-                for (let j = 0; j < lines1[i].length; j++) {
-                    if (j == 0) {
-                        fs.appendFile(outPath, `##### ${lines1[i][j]}\n`, 'utf-8', (err) => {
-                            if (err) console.error(err)
-                        })
-                    }
+                fs.appendFile(outPath, `##### ${lines1[i][0]}\n`, 'utf-8', (err) => {
+                    if (err) console.error(err)
+                })
+                for (let j = 1; j < lines1[i].length; j++) {
                     if (lines1[i][j] === lines2[i]) {
-                        console.log(`**${lines1[i][j]}**`)
+                        // console.log(`**${lines1[i][j]}**`)
                         fs.appendFile(outPath, `**${lines1[i][j]}**\n`, 'utf-8', (err) => {
                             if (err) console.error(err)
                         })
                     } else {
-                        console.log(lines1[i][j])
+                        // console.log(lines1[i][j])
                         fs.appendFile(outPath, `${lines1[i][j]}\n`, 'utf-8', (err) => {
                             if (err) console.error(err)
                         })
