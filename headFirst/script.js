@@ -73,7 +73,22 @@ class Car {
 
 const myCar = new Car("Toyota", 2020);
 
-console.log(myCar.getInfo());
-console.log(myCar.age());
+// console.log(myCar.getInfo());
+// console.log(myCar.age());
 
+
+class ElectricCar extends Car {
+    constructor(model, year, battery) {
+        super(model, year);
+        this.battery = battery;
+    }
+
+    getBatteryInfo() {
+        return `${super.getInfo()} with a ${this.battery} kWh battery`;
+    }
+}
+const myElectricCar = new ElectricCar("Tesla", 2022, 100);
+console.log(myElectricCar.getInfo());
+console.log(myElectricCar.getBatteryInfo());
+console.log(myElectricCar.age());
 
