@@ -55,16 +55,25 @@
 
 // }
 
-class Employee {
-    constructor(name, salary) {
-        this.name = name;
-        this.salary = salary;
+class Car {
+    constructor(model, year) {
+        this.model = model;
+        this.year = year;
     }
-    raiseSalary(percent) {
-        this.salary *= 1 + percent / 100;
+    getInfo() {
+        return `This is a ${this.model} car from ${this.year}`;
+    }
+
+    age() {
+        const currentYear = new Date().getFullYear();
+        return currentYear - this.year;
     }
 }
 
-const harry = new Employee("Harry", 90000);
 
-console.log(harry);
+const myCar = new Car("Toyota", 2020);
+
+console.log(myCar.getInfo());
+console.log(myCar.age());
+
+
