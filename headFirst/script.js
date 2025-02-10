@@ -55,26 +55,14 @@
 
 // }
 
-
-const employeePrototype = {
-    raiseSalary(percent) {
-        this.salary *= percent / 100;
+class Employee {
+    constructor(name, salary) {
+        this.name = name;
+        this.salary = salary;
     }
-}
-
-function creatEmployee(name, salary) {
-    const result = {name, salary};
-    Object.setPrototypeOf(result, employeePrototype);
-    return result;
-}
-
-function Employee(name, salary) {
-    this.name = name;
-    this.salary = salary;
-}
-
-Employee.prototype.raiseSalary = function(percent) {
-    this.salary *= 1 + percent / 100;
+    raiseSalary(percent) {
+        this.salary *= 1 + percent / 100;
+    }
 }
 
 const harry = new Employee("Harry", 90000);
