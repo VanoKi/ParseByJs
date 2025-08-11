@@ -1,8 +1,13 @@
 const axios = require('axios')
 const jsdom = require('jsdom')
 
-axios.
-get(' https://quotes.toscrape.com/')
-    .then(response => {
-        console.log(typeof response)
-    })
+async function getData() {
+    try {
+        const response = await axios.get(' https://quotes.toscrape.com/')
+        console.log(response)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+getData()
