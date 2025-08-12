@@ -1,28 +1,29 @@
 const axios = require('axios')
-// const jsdom = require('jsdom')
-const cheerio = require('cheerio')
+const jsdom = require('jsdom')
+const {JSDOM} = jsdom
+// const cheerio = require('cheerio')
 
 async function getData() {
     try {
         const response = await axios.get(' https://quotes.toscrape.com/')
-        // console.log(response.data)
-        // return response
-        const html = response.data
+        const dom = new JSDOM(response.data)
+        const document = dom.window.document
 
-        const $ = cheerio.load(html)
+        const quotes = document.querySelectorAll('.quote')
+        quotes.forEach((q, i) => {
+            const text = q.querySelector('.text').textContent
+            const author = q.querySelector('.author').textContent
+            const tags = [...q.querySelectorAll('.tag')].map(tag => tag.textContent)
 
-        $('.quote').each((i, elem) => {
-            const text = $(elem).find('text').text()
-            const author = $(elem).find('.author').text()
-            const tags = $(elem).find('.tag').map((i, e) => $(e).text()).get()
-
-            console.log(`${i + 1}. ${text} - ${author}`)
-            console.log(`Tags - ${tags,join(', ')}`)
-            console.log(`----`)
+            console.log(`${i + 1}. ${text} — ${author}`);
+            console.log(`Теги: ${tags.join(', ')}`);
+            console.log('---');
         })
     } catch (error) {
         console.error(error)
     }
 }
+
+getData()
 
 
